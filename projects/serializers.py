@@ -15,6 +15,3 @@ class ProjectSerializer(serializers.ModelSerializer):
         fields = ('id', 'name', 'description', 'created_at', 'tasks')
         read_only_fields = ('id', 'tasks')
 
-
-class ProjectReadSerializer(ProjectSerializer):
-    tasks = TaskSerializer(many=True)
