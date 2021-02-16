@@ -3,9 +3,15 @@ from projects.models import Project, Task
 
 
 class TaskSerializer(serializers.ModelSerializer):
+    project_name = serializers.SerializerMethodField()
+
     class Meta:
         model = Task
-        fields = ('id', 'name', 'description', 'project')
+        fields = ('id', 'name', 'description', 'project_name', 'project',
+                'start_date', 'end_date', 'created_at', 'modified_at')
+
+    def get_project_name(self, obj):
+        return obj.project.name
 
 
 class ProjectSerializer(serializers.ModelSerializer):
